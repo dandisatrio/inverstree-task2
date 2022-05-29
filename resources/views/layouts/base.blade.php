@@ -20,6 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('sb-admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+    @stack('prepend-styles')
+    @stack('addon-styles')
 </head>
 
 <body id="page-top">
@@ -42,19 +46,36 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item {{ (request()->is('author')) ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('author.dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+            @if (Auth::user()->role == 'ADMIN')
+            <li class="nav-item">
+                <a class="nav-link" href="#">
                     <i class=""></i>
                     <span>Manage User</span>
                 </a>
             </li>
+            
+            @else
+            <li class="nav-item {{ (request()->is('author/category*')) ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('author.category.index') }}">
+                    <i class=""></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('author/article*')) ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('author.article.index') }}">
+                    <i class=""></i>
+                    <span>Article</span>
+                </a>
+            </li>
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -184,13 +205,14 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('sb-admin/js/sb-admin-2.min.js') }}"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="{{ asset('sb-admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('sb-admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="{{ asset('sb-admin/js/demo/datatables-demo.js') }}"></script>
 
+    @stack('prepend-scripts')
+    @stack('addon-scripts')
 </body>
 
 </html>
