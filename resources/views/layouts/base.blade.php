@@ -45,7 +45,24 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Dashboard -->                       
+
+            @if (Auth::user()->roles == 'ADMIN')
+            <li class="nav-item {{ (request()->is('admin')) ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('admin/user*')) ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('admin.user.index') }}">
+                    <i class="fas fa-users"></i>
+                    <span>Manage User</span>
+                </a>
+            </li>
+            
+            @elseif (Auth::user()->roles == 'AUTHOR')
             <li class="nav-item {{ (request()->is('author')) ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('author.dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -53,25 +70,16 @@
                 </a>
             </li>
 
-            @if (Auth::user()->role == 'ADMIN')
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class=""></i>
-                    <span>Manage User</span>
-                </a>
-            </li>
-            
-            @else
             <li class="nav-item {{ (request()->is('author/category*')) ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('author.category.index') }}">
-                    <i class=""></i>
+                    <i class="fas fa-books"></i>
                     <span>Category</span>
                 </a>
             </li>
 
             <li class="nav-item {{ (request()->is('author/article*')) ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('author.article.index') }}">
-                    <i class=""></i>
+                    <i class="far fa-book-alt"></i>
                     <span>Article</span>
                 </a>
             </li>

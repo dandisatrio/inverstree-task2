@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Author\ArticleController;
 use App\Http\Controllers\Author\CategoryController;
 use App\Http\Controllers\Author\DashboardController as AuthorDashboardController;
@@ -25,6 +26,15 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
+        Route::get('/create', [UserController::class, 'create'])->name('admin.user.create');
+        Route::post('/store', [UserController::class, 'store'])->name('admin.user.store');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])->name('admin.user.edit');
+        Route::post('/update/{id}', [UserController::class, 'update'])->name('admin.user.update');
+        Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('admin.user.destroy');
+    });
 });
 
 Route::group(['prefix' => 'author', 'middleware' => ['author.auth']], function () {

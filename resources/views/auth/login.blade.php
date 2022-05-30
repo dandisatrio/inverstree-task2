@@ -67,6 +67,24 @@
                     </form>
                 </div>
             </div>
+
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <th>Email</th>
+                    <th>Password</th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>admin@mail.com</td>
+                        <td>admin123</td>
+                    </tr>
+                    <tr>
+                        <td>author@mail.com</td>
+                        <td>author123</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
