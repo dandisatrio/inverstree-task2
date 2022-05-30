@@ -13,7 +13,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::all()->where('user_id', auth()->user()->id);
 
         return view('pages.author.article.index', [
             'articles' => $articles

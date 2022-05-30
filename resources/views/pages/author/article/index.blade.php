@@ -25,6 +25,7 @@
                             <th>Content</th>
                             <th>Image</th>
                             <th>Category</th>
+                            <th>Tanggal dibuat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,9 +34,10 @@
                         <tr>
                             <td>{{ $article->id }}</td>
                             <td>{{ $article->title }}</td>
-                            <td>{{ $article->content }}</td>
+                            <td><p>{!! $article->content !!}</p></td>
                             <td><img src="{{ asset('storage/article/'.$article->image) }}" width="30%" /></td>
                             <td>{{ $article->category->name }}</td>
+                            <td>{{ $article->created_at }}</td>
                             <td class="d-flex">
                                 <a href="{{ route('author.article.edit', $article->id) }}" class="btn btn-sm btn-outline-secondary">
                                     <i class="fas fa-edit"></i>

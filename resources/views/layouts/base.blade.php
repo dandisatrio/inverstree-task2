@@ -72,14 +72,14 @@
 
             <li class="nav-item {{ (request()->is('author/category*')) ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('author.category.index') }}">
-                    <i class="fas fa-books"></i>
+                    <i class="fas fa-clipboard"></i>
                     <span>Category</span>
                 </a>
             </li>
 
             <li class="nav-item {{ (request()->is('author/article*')) ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('author.article.index') }}">
-                    <i class="far fa-book-alt"></i>
+                    <i class="fas fa-newspaper"></i>
                     <span>Article</span>
                 </a>
             </li>
@@ -129,13 +129,9 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    Home
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal" data-target="#logoutModal" onclick="event.preventDefault();

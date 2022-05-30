@@ -11,7 +11,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $article = Article::all()->count();
+        $article = Article::all()->where('user_id', auth()->user()->id)->count();
+
         $category = Category::all()->count();
 
         return view('pages.author.dashboard', [
