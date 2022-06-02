@@ -42,7 +42,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'      => 'required',
+            'name' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -50,7 +50,7 @@ class CategoryController extends Controller
         }
 
         $category = Category::create([
-            'name'      => $request->name,
+            'name' => $request->name,
             'user_id' => $request->user()->id
         ]);
 
@@ -106,7 +106,7 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
         $category->name = $request->name;
-        $category->save();
+        $category->update();
 
         return response()->json([
             'success' => true,

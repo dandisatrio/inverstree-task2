@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\api\v1\ArticleController;
 use App\Http\Controllers\api\v1\CategoryController;
 use App\Http\Controllers\api\v1\LoginController;
-use App\Http\Controllers\api\v1\PostController;
 use App\Http\Controllers\api\v1\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +36,10 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('category/{id}', [CategoryController::class, 'show']);
     Route::post('category/update/{id}', [CategoryController::class, 'update']);
     Route::delete('category/destroy/{id}', [CategoryController::class, 'destroy']);
+
+    Route::get('article' , [ArticleController::class, 'index']);
+    Route::post('article/store', [ArticleController::class, 'store']);
+    Route::get('article/{id}', [ArticleController::class, 'show']);
+    Route::post('article/update/{id}', [ArticleController::class, 'update']);
+    Route::delete('article/destroy/{id}', [ArticleController::class, 'destroy']);
 });
