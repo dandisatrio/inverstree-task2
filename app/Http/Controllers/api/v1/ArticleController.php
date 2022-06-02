@@ -18,7 +18,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $posts = Article::all();
+        $posts = Article::paginate(2);
 
         return response([
             'data' => $posts
